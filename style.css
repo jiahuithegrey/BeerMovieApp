@@ -1,0 +1,82 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+nav{
+    position: fixed;
+    background: rgba(0, 0, 0, 0.1);
+    padding:0px 20px;
+    z-index: 100;
+  }
+.brand-logo{
+    /* color: #ffa726 !important; */
+    font-size: 22px !important;
+    font-weight: bold !important;
+  }
+/* #nav-group{
+    color: #ffa726 !important;
+} */
+.caption{
+    margin-top: 75px;
+}
+h2{
+    font-weight: bold;
+}
+#search-bar{
+    height: 65px;
+}
+#search-question{
+    margin-top: 0px;
+}
+#food-input{
+    padding-left: 10px;
+    color: #ef6c00;
+    font-size: 26px;
+    font-weight: bold;
+}
+#button-view{
+    margin: 20px;
+}
+.food-btn{
+    font-size: 26px;
+    padding: 5px 20px;
+    border: 3px solid #ffa726;
+    color: #ffa726;
+    background-color: white;
+    margin: 10px;
+}
+.header{
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+.beer-data{
+    margin: 0 20px;
+    vertical-align:top;
+    display:inline-block;
+    color: white;
+    background-color: #ffa726;
+    padding: 10px;
+}
+.beer-img{
+    height:300px;
+    padding-left: 125px; /* manually center the image? */
+    padding-top: 20px;
+}
+.movie-data{
+    margin: 0 20px;
+    vertical-align:top;
+    display:inline-block;
+    color: white;
+    background-color: #ffa726;
+    padding: 10px;
+}
+.movie-poster{
+    height:300px;
+    margin-left: 50px;
+}
+.page-footer{
+    margin-top: 40px;
+}
+#controls{
+    margin-top: 40px;
+    width: 500px;
+}
