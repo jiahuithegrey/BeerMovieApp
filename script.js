@@ -1,75 +1,67 @@
+$(window).scroll(function(){
+    if($(window).scrollTop()>300){
+      $("nav").addClass("orange lighten-5");
+    }else{
+      $("nav").removeClass("orange lighten-5");
+    }
+});
+
 const slider = document.querySelector('.slider');
 M.Slider.init(slider, {
     indicators: false,
     height: 500,
     transition: 500,
-    interval:4000
-})
-$(document).ready(function() { 
-    $('audio#pop')[0].play();
-    var foodButton= [];
-    var foodYear= [];
-//1 -----------------------------------------------------
-    function arrayButtons() {
-        console.log(1);
-        console.log(foodYear)
-        $("#button-view").empty();
-        for (var i= 0; i < foodButton.length; i++) {
-            var button = $("<button>");
+    interval:3000
+});
+// -------------------------------------
+    var foodBtnEl= [];
+    var beerYear= [];
 
-            button.addClass("food-btn");
-            button.attr("data-name", foodButton[i]);      
-            button.attr("data-year", foodYear[i]);            
-            button.text(foodButton[i]);
-
-            $("#button-view").prepend(button);
-        }
-    } 
-//2 -----------------------------------------------------        
-    $("#food-input").keypress(function(event){ 
-    // $("#search").on("click", function(event) {             
-        if(event.which === 13){
-            var newFood = $("#food-input").val().trim();
-            foodButton.push(newFood);
-            newFood.val = "";   
-        }
-        // newFood 를 블러야 실행이 되는 것인데 실행시키지 않았었던 것
-        // --> It executes only when I call getBeerData(newFood), but I didn't
-        // newFood 버튼을 설정하고, 부르고, api 기능으로 실행시키는 것
-        // --> Set the newFood button, Call it, execute with API
-        getBeerData(newFood);            
+    $("#search-btn").on("click", function(event){
+        event.preventDefault();
+        var newFood = $("#food-input").val().trim();
+        foodBtnEl.push(newFood);
+        getBeer(newFood);
     });
-//3 ------------------------------------------------------ 
+
+    function arrayButtons() {
+        $("#button-view").empty();
+        for (var i= 0; i < foodBtnEl.length; i++) {
+            var buttonEl = $("<button>");
+
+            buttonEl.addClass("food-btn");
+            buttonEl.attr("data-name", foodBtnEl[i]);      
+            buttonEl.attr("data-year", beerYear[i]);            
+            buttonEl.text(foodBtnEl[i]);
+
+            $("#button-view").prepend(buttonEl);
+        }
+    }   
+
     $(document).on("click", ".food-btn", function(){
         var newFood= ($(this).attr("data-name")); 
-        console.log($(this).attr("data-year"));
-        getBeerData(newFood);
+        getBeer(newFood);
     });
-//4  ------------------------------------------------------ 
-    function getBeerData(newFood) { 
+
+    function getBeer(newFood) { 
         var userInput = newFood;
         var queryURL = "https://api.punkapi.com/v2/beers/?food=" + userInput;
         $.ajax({
             url: queryURL,
             method: "GET"         
         }).then(function(response) {
-            //console.log(response);
             var random = Math.floor(Math.random()*response.length);
             var year = response[random].first_brewed.slice(3);
 
-            foodYear.push(year);
+            beerYear.push(year);
 
-            arrayButtons();  // year 를 받기 전에 콜을 불렀기 때문에 아무것도 안나왔던것.
-                            // --> I didn't get anything, because I call arrayButtons(), before I get the year data
-                            // --> Now I get the year data, because I call arrayButton after I get the year data from API 
-            showBeerData(response, random);
-            getMovieData(year);
-            //  $("#beerOutput").text(JSON.stringify(response));                
+            arrayButtons(); 
+            updateBeer(response, random);
+            getMovie(year);            
         });
     }        
-//5 ------------------------------------------------------ 
-    function showBeerData(response,random) {
-        console.log("random");
+
+    function updateBeer(response,random) {
         $("#beer-view").empty();
 
         var beerDiv = $("<div class= 'beer-data'>");
@@ -92,19 +84,18 @@ $(document).ready(function() {
        
         $("#beer-view").append(beerDiv);
     }        
-//6  ------------------------------------------------------ 
-    function getMovieData(year) {            
-        // var movie = $(this).attr("data-name");
+
+    function getMovie(year) {           
         var queryURL = "http://www.omdbapi.com/?apikey=3f779744&t=beer&y=" + year;  
         $.ajax({
         url: queryURL,
         method: "GET",
         }).then(function(response) {             
-            showMovieData(response);
+            updateMovie(response);
         });
     }
-//7 ------------------------------------------------------
-    function showMovieData(response) {
+
+    function updateMovie(response) {
         $("#movie-view").empty();
         var movieDiv = $("<div class='movie-data'>");          
         
@@ -130,4 +121,3 @@ $(document).ready(function() {
         $("#movie-view").append(movieDiv);
     }      
 arrayButtons();   
-});

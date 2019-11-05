@@ -4,38 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- FontAwesome -->
-        <script src="https://kit.fontawesome.com/043a87e592.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <!-- Favicon and CSS -->
         <link rel="shortcut icon" type="image/png" href="img/beer.png"/>
-        <!--Import materialize.css-->
-        <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>   -->
         <link rel="stylesheet" href="style.css" /> 
         <title>Movie Beer App</title>
     </head>
     <body>
         <nav>
             <div class="nav-wrapper"> 
-              <a href="#!" class="brand-logo orange-text text-lighten-2">Beer Movie App</a>
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-              <ul class="orange-text text-lighten-2 right hide-on-med-and-down"> <!-- color not working! -->
-                <li><a href="about.html">About</a></li> 
-                <li><a href="team.html">Team</a></li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
+              <a href="#!" class="brand-logo orange-text text-darken-2">Beer Movie App</a>
             </div>
-            <ul class="sidenav" id="mobile-demo">
-                <li><a href="about.html">About</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
         </nav>
-
         <!-- Carousel -->  
         <div class="slider">
             <ul class="slides">
@@ -73,33 +60,22 @@
                 </li>              
             </ul>
         </div>
-        <!-- Section: search -->             
-        <section id="search" class="section section-search orange lighten-1 white-text center scrollspy">
-            <div class="container">
-                <div class="row">
-                    <div id="search-bar" class="col s12">
-                        <h5 id="search-question">What food would you like?</h5>
-                        <input type="text" id="food-input" class="white text autocomplete" 
-                                placeholder="popcorn, taco, teriyaki...">
-                        <!-- <form id="food-form"> -->
-                            <!-- <label for="food-input">What food would you like to search?</label> -->                  
-                            <!-- Buttontriggers new movie to be added -->
-                            <!-- <input id="search" type="submit" value="Search">  -->
-                        <!-- </form> -->
-                    </div>
-                </div>
+        <!-- Section: search -->              
+        <section id="search-container" class="center orange lighten-1 white-text">
+            <div class="row">
+                <form class="col s12">
+                    <label id="search-question" class="white-text">
+                        <h5>What food would you like?</h5>
+                    </label>
+                    <input id="food-input" class="orange-text text-darken-2 autocomplete" type="text"  
+                        placeholder="popcorn, taco, pizza..." name="search">
+                    <input id="search-btn" class="orange darken-2 white-text" type="submit" value="Search">
+                        <!-- <i class="fa fa-search"></i> -->
+                </form>
             </div>
         </section>  
-
-        <audio id= "pop">
-            <source src="audio/EaLovelyWayToSpendAnEvening.mp3" type="audio/mpeg">
-        </audio>   
-        
-        <!-- audio button -->
-        <audio controls id="controls">
-                <source src="audio/aLovelyWayToSpendAnEvening.mp3" type="audio/mpeg">
-            </audio>
-        <div id="button-view"></div><!-- Button list --> 
+        <!-- Button list --> 
+        <div id="button-view"></div>
         
         <div class="beer-information">
             <h5 class="header">Beer with Your Food:</h5>
@@ -123,7 +99,7 @@
 
         <footer class="page-footer orange lighten-1">
             <div class="container center">
-                © 2019 Copyright JavaScript Junkies
+                © 2019 Copyright Jiahui Wang
             </div>
         </footer>
     </body>

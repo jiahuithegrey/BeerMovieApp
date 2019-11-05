@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 body{
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -12,38 +15,53 @@ nav{
     font-size: 22px !important;
     font-weight: bold !important;
   }
-/* #nav-group{
-    color: #ffa726 !important;
-} */
 .caption{
     margin-top: 75px;
 }
 h2{
     font-weight: bold;
 }
-#search-bar{
-    height: 65px;
+#search-container{
+    padding: 5px;
+}
+.row{
+    margin: 5px;
 }
 #search-question{
-    margin-top: 0px;
-}
+    margin-top: 5px;
+    margin-bottom: 10px;
+} 
 #food-input{
-    padding-left: 10px;
-    color: #ef6c00;
-    font-size: 26px;
+    height: 40px;
+    border: none;
+    background: #f1f1f1;
+    margin: 0;
     font-weight: bold;
-}
+  }
+  /* Style the search button */
+#search-btn{
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
 #button-view{
-    margin: 20px;
-}
-.food-btn{
-    font-size: 26px;
-    padding: 5px 20px;
-    border: 3px solid #ffa726;
-    color: #ffa726;
-    background-color: white;
     margin: 10px;
 }
+.food-btn{
+    font-size: 18px;
+    padding: 5px 10px;
+    border: 2px solid #ffa726;
+    color: #ffa726;
+    background-color: white;
+    margin: 5px;
+}
+.food-btn:active{
+    font-weight: bold;
+    color: white;
+    background-color: #f57c00;
+  }
 .header{
     margin-left: 20px;
     margin-bottom: 0;
