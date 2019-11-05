@@ -55,6 +55,7 @@ h2{
     border: 2px solid #ffa726;
     color: #ffa726;
     background-color: white;
+    margin-right: 10px;
 }
 .food-btn:active{
     font-weight: bold;
