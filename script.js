@@ -51,8 +51,9 @@ M.Slider.init(slider, {
             method: "GET"         
         }).then(function(response) {
             var random = Math.floor(Math.random()*response.length);
-            var year = response[random].first_brewed.slice(3);
 
+            var year = response[random].first_brewed.slice(3);
+            // there's a var in the updatebber funciton that has the same value
             beerYear.push(year);
 
             arrayButtons(); 
@@ -65,23 +66,35 @@ M.Slider.init(slider, {
         $("#beer-view").empty();
 
         var beerDiv = $("<div class= 'beer-data'>");
-
-        var name = response[random].name;            
-        var firstBrewed = response[random].first_brewed.slice(3);            
+    
+        var name = response[random].name;                      
         var description = response[random].description;
         var foodPairing = response[random].food_pairing;
-        
+        var firstBrewedYear = response[random].first_brewed;
+        if (firstBrewedYear.length === 7){
+            firstBrewedYear = response[random].first_brewed.slice(3);
+        } else{
+            firstBrewedYear = response[random].first_brewed;
+        }
+        console.log(response);
+        console.log(response[random].first_brewed);
+
         var pOne = $("<h5>").html("Beer Name :  " + name);
-        var pTwo = $("<h6>").html("First-brewed Year :  " + firstBrewed);           
+        var pTwo = $("<h6>").html("First-brewed Year :  " + firstBrewedYear);           
         var pThree = $("<h6>").html("Description : " +  '<br>' + description);
         var pFour = $("<h6>").html("Food Paring : " +  '<br>' + foodPairing);
+        // null not working
+        var imgURL = response[random].image_url;
+        if (imgURL === "null"){
+            var image = $("<p>").text("Beer picture unavailable");
+            image.addClass("no-poster");
+        }else{
+            var image = $("<img>").attr("src", imgURL);
+            image.addClass("beer-img");
+        }
 
-        var imageURL = response[random].image_url;
-        var img = $("<img>").attr("src", imageURL);
-        img.addClass("beer-img");
-        beerDiv.append(img);
+        beerDiv.append(image);
         beerDiv.append(pOne,pTwo,pThree,pFour);
-       
         $("#beer-view").append(beerDiv);
     }        
 
@@ -98,24 +111,29 @@ M.Slider.init(slider, {
     function updateMovie(response) {
         $("#movie-view").empty();
         var movieDiv = $("<div class='movie-data'>");          
-        
+        console.log(response);
         var title = response.Title;
         var plot = response.Plot;
         var director = response.Director;
         var actors = response.Actors;           
         var country = response.Country;
 
-        var pOne = $("<p>").text("Title: " + title);
-        var pTwo = $("<p>").text("Plot: " + plot);
-        var pThree = $("<p>").text("Director: " + director);
-        var pFour = $("<p>").text("Actors: " + actors);            
-        var pFive = $("<p>").text("Country: " + country); 
+        var pOne = $("<h5>").html("Title: " + title);
+        var pTwo = $("<h6>").html("Plot: " + plot);
+        var pThree = $("<h6>").html("Director: " + director);
+        var pFour = $("<h6>").html("Actors: " + actors);            
+        var pFive = $("<h6>").html("Country: " + country); 
         
         var imgURL = response.Poster;
-        var image = $("<img>").attr("src", imgURL);  
-        image.addClass("movie-poster");        
+        if (imgURL === "N/A"){
+            var image = $("<p>").text("Movie Poster unavailable");
+            image.addClass("no-poster");
+        }else{
+            var image = $("<img>").attr("src", imgURL);  
+            image.addClass("movie-poster");  
+        } 
+
         movieDiv.append(image);
-        
         movieDiv.append(pOne,pTwo,pThree,pFour,pFive);
 
         $("#movie-view").append(movieDiv);

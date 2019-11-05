@@ -47,7 +47,7 @@ h2{
     cursor: pointer;
   }
 #button-view{
-    margin: 10px;
+    margin: 20px;
 }
 .food-btn{
     font-size: 18px;
@@ -55,7 +55,6 @@ h2{
     border: 2px solid #ffa726;
     color: #ffa726;
     background-color: white;
-    margin: 5px;
 }
 .food-btn:active{
     font-weight: bold;
@@ -75,9 +74,10 @@ h2{
     padding: 10px;
 }
 .beer-img{
-    height:300px;
-    padding-left: 125px; /* manually center the image? */
-    padding-top: 20px;
+    display:block;
+    margin:auto;
+    height:200px;
+    padding: 0 auto;
 }
 .movie-data{
     margin: 0 20px;
@@ -88,13 +88,18 @@ h2{
     padding: 10px;
 }
 .movie-poster{
+    display:block;
+    margin:auto;
     height:300px;
-    margin-left: 50px;
+    margin: 0 auto;
+}
+.no-poster{
+    font-style: italic;
 }
 .page-footer{
     margin-top: 40px;
 }
-#controls{
+/* #controls{
     margin-top: 40px;
     width: 500px;
-}
+} */
