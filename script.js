@@ -86,7 +86,7 @@ M.Slider.init(slider, {
     }        
 
     function getMovie(year) {           
-        var queryURL = "http://www.omdbapi.com/?apikey=3f779744&t=beer&y=" + year;  
+        var queryURL = "https://www.omdbapi.com/?apikey=3f779744&t=beer&y=" + year;  
         $.ajax({
         url: queryURL,
         method: "GET",
