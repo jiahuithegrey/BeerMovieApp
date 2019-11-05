@@ -37,8 +37,8 @@ M.Slider.init(slider, {
             $("#button-view").prepend(buttonEl);
         }
     }   
-
-    $(document).on("click", ".food-btn", function(){
+    // line below is special?????
+    $(document).on("click", ".food-btn", function(){ 
         var newFood= ($(this).attr("data-name")); 
         getBeer(newFood);
     });
