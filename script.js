@@ -37,7 +37,7 @@ M.Slider.init(slider, {
             $("#button-view").prepend(buttonEl);
         }
     }   
-    // line below is special?????
+    // google "attach event handler to a dynamic button"
     $(document).on("click", ".food-btn", function(){ 
         var newFood= ($(this).attr("data-name")); 
         getBeer(newFood);
@@ -85,7 +85,7 @@ M.Slider.init(slider, {
         var pFour = $("<h6>").html("Food Paring : " +  '<br>' + foodPairing);
         // null not working
         var imgURL = response[random].image_url;
-        if (imgURL === "null"){
+        if (imgURL === null){
             var image = $("<p>").text("Beer picture unavailable");
             image.addClass("no-poster");
         }else{
